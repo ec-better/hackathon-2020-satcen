@@ -1,0 +1,12 @@
+name: env_better
+channels:
+  - conda-forge
+  - terradue
+dependencies:
+  - cioppy
+  - gdal
+  - geopandas
+  - numpy
+  - matplotlib
+  - pillow
+  - ipykernel
