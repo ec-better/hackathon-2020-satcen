@@ -1,6 +1,8 @@
 from urllib.parse import urlparse
 import gdal 
 import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
 
 def get_vsi_url(enclosure, username, api_key):
     
@@ -43,3 +45,55 @@ def vsi_download(url, bbox, username, api_key):
         layers.append(ds.GetRasterBand(i).ReadAsArray())
 
     return np.dstack(layers)
+
+def read_raster_band(path,band):
+    ds = gdal.Open(path)
+
+    return ds.GetRasterBand(band).ReadAsArray()
+
+ 
+def load_image(path):
+        
+    # create a numpy array
+    ds = gdal.Open(path)
+    
+    layers = []
+
+    for i in range(1, ds.RasterCount+1):
+        layers.append(ds.GetRasterBand(i).ReadAsArray())
+
+    return np.dstack(layers)
+    
+def plot_bands_row(image,vmin=0,vmax=255,cmap=plt.cm.gray):
+
+    #to support single bands
+    if(image.ndim == 2):
+        image=np.expand_dims(image, axis=-1)
+        
+    columns=image.shape[2]
+    fig = plt.figure(figsize=(20,20))
+    for i in range(0, columns):
+        a=fig.add_subplot(1, columns, i+1)
+        width = 12
+        height = 12
+        data=image[:,:,i]
+        imgplot = plt.imshow(data.reshape(data.shape[0],data.shape[1]), cmap=cmap , vmin=vmin, vmax=vmax)
+
+    plt.tight_layout()
+    fig = plt.gcf()
+    plt.show()
+    
+def plot_rgb(red,green,blue):
+    data = np.dstack((red, 
+                       green,
+                       blue)).astype(np.uint8) 
+
+       
+    #fig = plt.figure(figsize=(20,20))
+    #a=fig.add_subplot(1, 1, 1)
+    img = Image.fromarray(data)
+    imgplot = plt.imshow(img)
+    
+    plt.tight_layout()
+    fig = plt.gcf()
+    plt.show()
