@@ -10,4 +10,6 @@ dependencies:
   - matplotlib
   - pillow
   - rasterio
+  - scipy
+  - scikit-image
   - ipykernel
