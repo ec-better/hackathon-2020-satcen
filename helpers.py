@@ -4,20 +4,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
-def get_vsi_url(enclosure, username, api_key):
+def get_vsi_url(enclosure, username=None, api_key=None):
     
     
     parsed_url = urlparse(enclosure)
 
-    url = '/vsicurl/{}://{}:{}@{}/api{}'.format(list(parsed_url)[0],
+    if(username != None):
+        url = '/vsicurl/{}://{}:{}@{}/api{}'.format(list(parsed_url)[0],
                                             username, 
                                             api_key, 
                                             list(parsed_url)[1],
                                             list(parsed_url)[2])
+    else:
+        url = '/vsicurl/{}://{}/api{}'.format(list(parsed_url)[0],
+                                            list(parsed_url)[1],
+                                            list(parsed_url)[2])        
     
     return url 
 
-def vsi_download(url, bbox, username, api_key):
+def vsi_download(url, bbox, username=None, api_key=None):
     
     vsi_url = get_vsi_url(url, username, api_key)
     print(vsi_url)
