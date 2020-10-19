@@ -69,7 +69,7 @@ def load_image(path):
 
     return np.dstack(layers)
     
-def plot_bands_row(image,vmin=0,vmax=255,cmap=plt.cm.gray):
+def plot_bands_row(image,vmin=0,vmax=255,cmap=plt.cm.gray, colormap=False):
 
     #to support single bands
     if(image.ndim == 2):
@@ -83,6 +83,8 @@ def plot_bands_row(image,vmin=0,vmax=255,cmap=plt.cm.gray):
         height = 12
         data=image[:,:,i]
         imgplot = plt.imshow(data.reshape(data.shape[0],data.shape[1]), cmap=cmap , vmin=vmin, vmax=vmax)
+        if(colormap):
+            plt.colorbar(imgplot,fraction=0.046, pad=0.04)
 
     plt.tight_layout()
     fig = plt.gcf()
