@@ -7,6 +7,7 @@ import pyproj
 from functools import partial
 import numbers
 
+
 def get_vsi_url(enclosure, username=None, api_key=None):
     
     
@@ -144,3 +145,15 @@ def project_feature(feature, from_proj, to_proj):
     new_coordinates = project_coords(feature['geometry']['coordinates'], from_proj, to_proj)
     feature['geometry']['coordinates'] = new_coordinates
     return feature
+
+def convert2byte(array, minSource, maxSource):
+    arrayflatten = array.flatten()
+    byteArray = np.zeros(len(arrayflatten)).astype(np.uint8)
+    for index in range(len(arrayflatten)):
+        if (arrayflatten[index]<minSource):
+            byteArray[index]=0
+        elif (arrayflatten[index]>maxSource):
+            byteArray[index]=255
+        else:
+            byteArray[index]= ((arrayflatten[index]-minSource) * 255/(maxSource-minSource)).astype(np.uint8)
+    return byteArray.reshape(array.shape)
