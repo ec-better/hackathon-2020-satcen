@@ -3,6 +3,9 @@ import gdal
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
+import pyproj
+from functools import partial
+import numbers
 
 def get_vsi_url(enclosure, username=None, api_key=None):
     
@@ -118,3 +121,26 @@ def image_histogram_equalization(image, number_bins=256):
     image_equalized = np.interp(image.flatten(), bins[:-1], cdf)
 
     return image_equalized.reshape(image.shape), cdf
+
+def project_coords(coords, from_proj, to_proj):
+    if len(coords) < 1:
+        return []
+
+    if isinstance(coords[0], numbers.Number):
+        from_x, from_y = coords
+        to_x, to_y = pyproj.transform(from_proj, to_proj, from_x, from_y)
+        return [to_x, to_y]
+
+    new_coords = []
+    for coord in coords:
+        new_coords.append(project_coords(coord, from_proj, to_proj))
+    return new_coords
+
+def project_feature(feature, from_proj, to_proj):
+    if not 'geometry' in feature or not 'coordinates' in feature['geometry']:
+        print('Failed project feature', feature)
+        return None
+
+    new_coordinates = project_coords(feature['geometry']['coordinates'], from_proj, to_proj)
+    feature['geometry']['coordinates'] = new_coordinates
+    return feature
