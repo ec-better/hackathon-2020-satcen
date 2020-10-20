@@ -108,7 +108,7 @@ def plot_rgb(red,green,blue):
     plt.tight_layout()
     fig = plt.gcf()
     plt.show()
-    
+      
 
 def image_histogram_equalization(image, number_bins=256):
     # from http://www.janeriksolem.net/2009/06/histogram-equalization-with-python-and.html
