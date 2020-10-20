@@ -6,7 +6,7 @@ from PIL import Image
 import pyproj
 from functools import partial
 import numbers
-
+from sklearn.cluster import DBSCAN, KMeans
 
 def get_vsi_url(enclosure, username=None, api_key=None):
     
@@ -157,3 +157,32 @@ def convert2byte(array, minSource, maxSource):
         else:
             byteArray[index]= ((arrayflatten[index]-minSource) * 255/(maxSource-minSource)).astype(np.uint8)
     return byteArray.reshape(array.shape)
+
+def km_clust(array, n_clusters):
+    
+    # Create a line array, the lazy way
+    X = array.reshape((-1, 1))
+    # Define the k-means clustering problem
+    k_m = KMeans(n_clusters=n_clusters, n_init=4)
+    # Solve the k-means clustering problem
+    k_m.fit(X)
+    # Get the coordinates of the clusters centres as a 1D array
+    values = k_m.cluster_centers_.squeeze()
+    # Get the label of each point
+    labels = k_m.labels_
+    return(values, labels)
+'''
+def db_clust(array, eps, min_samples):
+    
+    # Create a line array, the lazy way
+    X = array.reshape((-1, 1))
+    # Define the k-means clustering problem
+    k_m = DBSCAN(eps=eps, min_samples=min_samples)
+    # Solve the k-means clustering problem
+    k_m.fit(X)
+    # Get the coordinates of the clusters centres as a 1D array
+    values = k_m.cluster_centers_.squeeze()
+    # Get the label of each point
+    labels = k_m.labels_
+    return(values, labels)
+'''
