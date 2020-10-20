@@ -2,7 +2,37 @@
 
 ## Run the notebook on Binder
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/obarrilero/satcen-better-hackathon-2020/master?urlpath=lab)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ec-better/hackathon-2020-satcen/master?urlpath=lab)
+
+## Run the notebook locally using docker
+
+Clone this repository with:
+
+```bash
+git clone https://github.com/ec-better/hackathon-2020-satcen.git
+```
+
+Go to the directory containing the cloned repository:
+
+```bash
+cd hackathon-2020-satcen
+```
+
+Use docker compose to build the docker image:
+
+```bash
+docker-compose build
+```
+
+This step can take a few minutes...
+
+Finally run the docker with:
+
+```
+docker-compose up
+```
+
+Open a browser window at the address http://0.0.0.0:9005 or http://127.0.0.1:9005 and run the notebook
 
 ## About the hackathon
 
