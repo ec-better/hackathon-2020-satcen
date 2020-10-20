@@ -11,12 +11,12 @@
  The complexity of the exercises will depend on the audience skills.
  
  Tentative Agenda:
-     1.[Introduction](./introduction.ipynb)
-     2.[Introduction to SAR image formation and differences with Optical Data](./introductionSAR.ipynb)
-     3.[Change Detection with SAR imagery](./acd.ipynb)
-     4.[Thresholding techniques](./thresholding.ipynb)
-     5.[Postprocessing](./postprocessing.ipynb)
-     6.[Series of data](./series.ipynb)
+     - 1.[Introduction](./introduction.ipynb)
+     - 2.[Introduction to SAR image formation and differences with Optical Data](./introductionSAR.ipynb)
+     - 3.[Change Detection with SAR imagery](./acd.ipynb)
+     - 4.[Thresholding techniques](./thresholding.ipynb)
+     - 5.[Postprocessing](./postprocessing.ipynb)
+     - 6.[Series of data](./series.ipynb)
  
  
  ### Requirements: 
@@ -29,7 +29,3 @@
  ### Time requirements: 
  
  Half day (4 hours)
-
-TODO: Add link
-
-
