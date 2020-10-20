@@ -42,17 +42,17 @@ Open a browser window at the address http://0.0.0.0:9005 or http://127.0.0.1:900
  
  ### Tentative Agenda:
      
-* 1.[Introduction](./introduction.ipynb)
+* 1.[Introduction](./1-introduction.ipynb)
      
-* 2.[Introduction to SAR image formation and differences with Optical Data](./introductionSAR.ipynb)
+* 2.[Introduction to SAR image formation and differences with Optical Data](./2-introductionSAR.ipynb)
      
-* 3.[Change Detection with SAR imagery](./acd.ipynb)
+* 3.[Change Detection with SAR imagery](./3-acd.ipynb)
 
-* 4.[Thresholding techniques](./thresholding.ipynb)
+* 4.[Thresholding techniques](./4-thresholding.ipynb)
      
-* 5.[Postprocessing](./postprocessing.ipynb)
+* 5.[Postprocessing](./5-postprocessing.ipynb)
      
-* 6.[Series of data](./series.ipynb)
+* 6.[Series of data](./6-series.ipynb)
  
  
  ### Requirements: 
