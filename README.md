@@ -7,4 +7,10 @@
 
 ## About the hackathon
 
-TODO - description of notebooks
+TODO: Add link
+
+ - 1.Introduction
+ - 2.Intro SAR
+ - 3.ACD --> Change Detection with SAR
+ - 4.Thresholding
+ - 5.Postprocessing
