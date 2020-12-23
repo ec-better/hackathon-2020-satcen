@@ -1,4 +1,4 @@
-FROM terradue/l1-binder:3.0
+FROM terradue/l1-binder:3.1
 
 MAINTAINER Terradue S.r.l
 
